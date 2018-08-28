@@ -33,12 +33,6 @@ class ModifyViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-//    func storeTextData () -> [String] {
-//        guard let title = self.title else { fatalError() }
-//        data = [title, textContent]
-//        return data
-//    }
-    
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
     }
@@ -65,7 +59,6 @@ class ModifyViewController: UIViewController {
                 
             return ModifyViewController()
         }
-        
         viewController.textContent = textContent
         return viewController
     }

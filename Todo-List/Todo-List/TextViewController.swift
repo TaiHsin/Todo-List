@@ -26,10 +26,6 @@ class TextViewController: UIViewController {
         todoTableView.register(newNib, forCellReuseIdentifier: "TextTableViewCell")
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        todoTableView.reloadData()
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
