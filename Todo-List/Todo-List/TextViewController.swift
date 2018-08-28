@@ -59,9 +59,9 @@ extension TextViewController: UITableViewDataSource {
         return UITableViewCell()
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        indexPathRow = indexPath.row
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        indexPathRow = indexPath.row
+    }
     
     @objc func editText(sender: UIButton) {
         let selectedText = textContent[sender.tag]
@@ -71,10 +71,10 @@ extension TextViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
+        if editingStyle == .delete {
             self.textContent.remove(at: indexPath.row)
             todoTableView.deleteRows(at: [indexPath], with: .fade)
-//        }
+        }
         todoTableView.reloadData()
     }
 }
