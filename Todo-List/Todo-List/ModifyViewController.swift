@@ -20,7 +20,8 @@ class ModifyViewController: UIViewController {
     var textContent = ""
     
     @IBAction func saveText(_ sender: UIButton) {
-        
+        NotificationCenter.default.post(name: Notification.Name("SAVE"), object: nil, userInfo: ["textkey": textView.text])
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
@@ -37,6 +38,7 @@ class ModifyViewController: UIViewController {
         }
         
 //        adjustTextViewHeight()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,6 +57,7 @@ class ModifyViewController: UIViewController {
         viewController.textContent = textContent
         return viewController
     }
+
 //
 //    func adjustTextViewHeight(){
 //        let fixedWidth = textView.frame.size.width

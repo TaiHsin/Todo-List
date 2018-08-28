@@ -21,9 +21,9 @@ class TextViewController: UIViewController {
         
     }
     
-    
     var textContent: [String] = ["test1", "test2", "test3", "test4", "test5"]
     var indexPathRow = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,12 +32,23 @@ class TextViewController: UIViewController {
         
         let newNib = UINib(nibName: "TextTableViewCell", bundle: nil)
         todoTableView.register(newNib, forCellReuseIdentifier: "TextTableViewCell")
-        // Do any additional setup after loading the view.
+        
+        
+        let notificationName = Notification.Name("SAVE")
+        NotificationCenter.default.addObserver(self, selector: #selector(saveText(notification:)), name: notificationName, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func saveText(notification: Notification) {
+        print("save success!!!")
+        
+        guard let textData = notification.userInfo as? [String: String] else { fatalError() }
+        textContent[indexPathRow] = textData["textkey"]!
+        todoTableView.reloadData()
     }
 
 }
@@ -59,12 +70,13 @@ extension TextViewController: UITableViewDataSource {
         return UITableViewCell()
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        indexPathRow = indexPath.row
-//    }
+    }
     
     @objc func editText(sender: UIButton) {
-        let selectedText = textContent[sender.tag]
+        indexPathRow = sender.tag
+        let selectedText = textContent[indexPathRow]
         let modifyViewController = ModifyViewController.modifyViewControllerForText(selectedText)
         
         navigationController?.pushViewController(modifyViewController, animated: true)
