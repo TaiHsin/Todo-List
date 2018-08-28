@@ -13,7 +13,6 @@ class ModifyViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var textViewHeight: NSLayoutConstraint!
-//    @IBOutlet weak var backButton: UIBarButtonItem!
     
     static let storyboardName = "Main"
     static let viewControllerIdentifier = "ModifyViewController"
@@ -41,7 +40,6 @@ class ModifyViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     class func modifyViewControllerForText(_ textContent: String) -> ModifyViewController {
@@ -49,6 +47,7 @@ class ModifyViewController: UIViewController {
         
         guard let viewController = storyboard.instantiateViewController(withIdentifier: ModifyViewController.viewControllerIdentifier)
             as? ModifyViewController else {
+                
             return ModifyViewController()
         }
         

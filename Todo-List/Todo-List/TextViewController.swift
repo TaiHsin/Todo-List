@@ -9,8 +9,10 @@
 import UIKit
 
 class TextViewController: UIViewController {
+    
+    var textContent: [String] = ["test1", "test2", "test3", "test4", "test5"]
+    var indexPathRow = 0
 
-//    @IBOutlet weak var addLabel: UIBarButtonItem!
     @IBOutlet var todoTableView: UITableView!
     
     @IBAction func addText(_ sender: Any) {
@@ -18,12 +20,8 @@ class TextViewController: UIViewController {
         let modifyViewController = ModifyViewController.modifyViewControllerForText(selectedText)
         
         navigationController?.pushViewController(modifyViewController, animated: true)
-        
     }
-    
-    
-    var textContent: [String] = ["test1", "test2", "test3", "test4", "test5"]
-    var indexPathRow = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,17 +30,17 @@ class TextViewController: UIViewController {
         
         let newNib = UINib(nibName: "TextTableViewCell", bundle: nil)
         todoTableView.register(newNib, forCellReuseIdentifier: "TextTableViewCell")
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
 }
 
+// MARK: - Table View Data Source
+
 extension TextViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return textContent.count
     }
@@ -79,7 +77,10 @@ extension TextViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - Table View Delegate
+
 extension TextViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
