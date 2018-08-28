@@ -12,6 +12,7 @@ class TextViewController: UIViewController {
     
     var textContent: [String] = ["test1", "test2", "test3", "test4", "test5"]
     var indexPathRow = 0
+    private let dataModel = DataModel()
 
     @IBOutlet var todoTableView: UITableView!
     
@@ -30,6 +31,9 @@ class TextViewController: UIViewController {
         
         let newNib = UINib(nibName: "TextTableViewCell", bundle: nil)
         todoTableView.register(newNib, forCellReuseIdentifier: "TextTableViewCell")
+
+        dataModel.delegate = self
+        dataModel.requestData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -85,3 +89,20 @@ extension TextViewController: UITableViewDelegate {
         return UITableViewAutomaticDimension
     }
 }
+
+// MARK: - Data Manager Delegate
+
+extension TextViewController: DataModelDelegate {
+    func didRecieveDataUpdate(data: String) {
+        print(data)
+    }
+}
+
+
+
+
+
+
+
+
+

@@ -10,6 +10,7 @@
 		9D91EE1F213539A900E3382E /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D91EE1E213539A900E3382E /* TextViewController.swift */; };
 		9D91EE2221353A6800E3382E /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D91EE2021353A6800E3382E /* TextTableViewCell.swift */; };
 		9D91EE2321353A6800E3382E /* TextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D91EE2121353A6800E3382E /* TextTableViewCell.xib */; };
+		9D91EE2521357BBE00E3382E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D91EE2421357BBE00E3382E /* DataManager.swift */; };
 		9DE0FAFF213525D600549754 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE0FAFE213525D600549754 /* AppDelegate.swift */; };
 		9DE0FB01213525D600549754 /* ModifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE0FB00213525D600549754 /* ModifyViewController.swift */; };
 		9DE0FB04213525D600549754 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DE0FB02213525D600549754 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 		9D91EE1E213539A900E3382E /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		9D91EE2021353A6800E3382E /* TextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
 		9D91EE2121353A6800E3382E /* TextTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextTableViewCell.xib; sourceTree = "<group>"; };
+		9D91EE2421357BBE00E3382E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		9DE0FAFB213525D600549754 /* Todo-List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Todo-List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DE0FAFE213525D600549754 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DE0FB00213525D600549754 /* ModifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				9DE0FB0A213525D600549754 /* Info.plist */,
 				9D91EE2021353A6800E3382E /* TextTableViewCell.swift */,
 				9D91EE2121353A6800E3382E /* TextTableViewCell.xib */,
+				9D91EE2421357BBE00E3382E /* DataManager.swift */,
 			);
 			path = "Todo-List";
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D91EE2221353A6800E3382E /* TextTableViewCell.swift in Sources */,
+				9D91EE2521357BBE00E3382E /* DataManager.swift in Sources */,
 				9DE0FB01213525D600549754 /* ModifyViewController.swift in Sources */,
 				9DE0FB112135273000549754 /* NavigationViewController.swift in Sources */,
 				9DE0FAFF213525D600549754 /* AppDelegate.swift in Sources */,

@@ -17,6 +17,7 @@ class ModifyViewController: UIViewController {
     static let storyboardName = "Main"
     static let viewControllerIdentifier = "ModifyViewController"
     var textContent = ""
+    var data: [[String: String]] = []
     
     @IBAction func saveText(_ sender: UIButton) {
         
@@ -33,9 +34,7 @@ class ModifyViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         textView.layer.cornerRadius = 5
         saveButton.layer.cornerRadius = 5
-        
         changeTitle()
-
     }
 
     override func didReceiveMemoryWarning() {
