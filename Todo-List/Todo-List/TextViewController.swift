@@ -10,8 +10,20 @@ import UIKit
 
 class TextViewController: UIViewController {
 
+//    @IBOutlet weak var addLabel: UIBarButtonItem!
     @IBOutlet var todoTableView: UITableView!
     
+    @IBAction func addText(_ sender: Any) {
+        let selectedText = ""
+        let modifyViewController = ModifyViewController.modifyViewControllerForText(selectedText)
+        
+        navigationController?.pushViewController(modifyViewController, animated: true)
+        
+    }
+    
+    
+    var textContent: [String] = ["test1", "test2", "test3", "test4", "test5"]
+    var indexPathRow = 0
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,7 +39,7 @@ class TextViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
 }
 
 extension TextViewController: UITableViewDataSource {
@@ -38,15 +50,30 @@ extension TextViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "TextTableViewCell", for: indexPath) as? TextTableViewCell {
          
-            cell.textLable.text = "test!"
+            cell.textLable.text = textContent[indexPath.row]
+            cell.editButton.addTarget(self, action: #selector(self.editText), for: .touchUpInside)
+            cell.editButton.tag = indexPath.row
+            
             return cell
         }
         return UITableViewCell()
     }
     
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        indexPathRow = indexPath.row
+//    }
+    
+    @objc func editText(sender: UIButton) {
+        let selectedText = textContent[sender.tag]
+        let modifyViewController = ModifyViewController.modifyViewControllerForText(selectedText)
+        
+        navigationController?.pushViewController(modifyViewController, animated: true)
+    }
     
 }
 
 extension TextViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
 }

@@ -11,19 +11,29 @@ import UIKit
 class ModifyViewController: UIViewController {
 
     @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet weak var textView: UITextView!
+//    @IBOutlet weak var backButton: UIBarButtonItem!
+    
+    static let storyboardName = "Main"
+    static let viewControllerIdentifier = "ModifyViewController"
+    var textContent = ""
     
     @IBAction func saveText(_ sender: UIButton) {
         
     }
     
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        if textContent == "" {
+            textView.text = ""
+        } else {
+            textView.text = textContent
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,6 +41,17 @@ class ModifyViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    class func modifyViewControllerForText(_ textContent: String) -> ModifyViewController {
+        let storyboard = UIStoryboard(name: ModifyViewController.storyboardName, bundle: nil)
+        
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: ModifyViewController.viewControllerIdentifier)
+            as? ModifyViewController else {
+            return ModifyViewController()
+        }
+        
+        viewController.textContent = textContent
+        return viewController
+    }
 
 }
 
