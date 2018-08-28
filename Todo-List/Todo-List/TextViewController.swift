@@ -10,7 +10,9 @@ import UIKit
 
 class TextViewController: UIViewController {
 
-//    @IBOutlet weak var addLabel: UIBarButtonItem!
+    var textContent: [String] = ["test1", "test2", "test3", "test4", "test5"]
+    var indexPathRow = 0
+    
     @IBOutlet var todoTableView: UITableView!
     
     @IBAction func addText(_ sender: Any) {
@@ -18,12 +20,8 @@ class TextViewController: UIViewController {
         let modifyViewController = ModifyViewController.modifyViewControllerForText(selectedText)
         
         navigationController?.pushViewController(modifyViewController, animated: true)
-        
     }
-    
-    var textContent: [String] = ["test1", "test2", "test3", "test4", "test5"]
-    var indexPathRow = 0
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,7 +30,6 @@ class TextViewController: UIViewController {
         
         let newNib = UINib(nibName: "TextTableViewCell", bundle: nil)
         todoTableView.register(newNib, forCellReuseIdentifier: "TextTableViewCell")
-        
         
         let notificationName = Notification.Name("SAVE")
         NotificationCenter.default.addObserver(self, selector: #selector(saveText(notification:)), name: notificationName, object: nil)
@@ -44,8 +41,6 @@ class TextViewController: UIViewController {
     }
     
     @objc func saveText(notification: Notification) {
-        print("save success!!!")
-        
         guard let textData = notification.userInfo as? [String: String] else { fatalError() }
         
         if textData["Title"] == "Add" {
@@ -56,10 +51,12 @@ class TextViewController: UIViewController {
         
         todoTableView.reloadData()
     }
-
 }
 
+// MARK: - Table View Data Source
+
 extension TextViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return textContent.count
     }
@@ -96,6 +93,8 @@ extension TextViewController: UITableViewDataSource {
         todoTableView.reloadData()
     }
 }
+
+// MARK: - Table View Delegate
 
 extension TextViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
