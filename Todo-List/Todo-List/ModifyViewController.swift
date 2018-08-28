@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol DataModelDelegate: AnyObject {
+    func didRecieveDataUpdate(data: [String])
+}
+
 class ModifyViewController: UIViewController {
 
     @IBOutlet weak var saveButton: UIButton!
@@ -17,11 +21,23 @@ class ModifyViewController: UIViewController {
     static let storyboardName = "Main"
     static let viewControllerIdentifier = "ModifyViewController"
     var textContent = ""
-    var data: [[String: String]] = []
+    var data: [String] = []
+    
+    weak var delegate: DataModelDelegate?
     
     @IBAction func saveText(_ sender: UIButton) {
-        
+        guard let title = self.title else { fatalError() }
+        data = [title, textView.text]
+        print(title, textView.text)
+        delegate?.didRecieveDataUpdate(data: data)
+        navigationController?.popViewController(animated: true)
     }
+    
+//    func storeTextData () -> [String] {
+//        guard let title = self.title else { fatalError() }
+//        data = [title, textContent]
+//        return data
+//    }
     
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)

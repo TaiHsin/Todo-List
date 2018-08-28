@@ -8,17 +8,20 @@
 
 import Foundation
 
-protocol DataModelDelegate: AnyObject {
-    func didRecieveDataUpdate(data: String)
-}
+//protocol DataModelDelegate: AnyObject {
+//    func didRecieveDataUpdate(data: String)
+//}
 
-class DataModel {
-    
-    weak var delegate: DataModelDelegate?
-    
-    func requestData() {
-        
-        let data = "Data from wherever"
-        delegate?.didRecieveDataUpdate(data: data)
-    }
-}
+//class DataModel {
+//    
+//    let modifyText = ModifyViewController()
+//    weak var delegate: DataModelDelegate?
+//    
+//    func requestData() {
+//        self.modifyText.saveText(nil){
+//            
+//        }
+//        let data = "Data from wherever"
+//        delegate?.didRecieveDataUpdate(data: data)
+//    }
+//}

@@ -12,14 +12,13 @@ class TextViewController: UIViewController {
     
     var textContent: [String] = ["test1", "test2", "test3", "test4", "test5"]
     var indexPathRow = 0
-    private let dataModel = DataModel()
 
     @IBOutlet var todoTableView: UITableView!
     
     @IBAction func addText(_ sender: Any) {
         let selectedText = ""
         let modifyViewController = ModifyViewController.modifyViewControllerForText(selectedText)
-        
+        modifyViewController.delegate = self
         navigationController?.pushViewController(modifyViewController, animated: true)
     }
 
@@ -32,10 +31,17 @@ class TextViewController: UIViewController {
         let newNib = UINib(nibName: "TextTableViewCell", bundle: nil)
         todoTableView.register(newNib, forCellReuseIdentifier: "TextTableViewCell")
 
-        dataModel.delegate = self
-        dataModel.requestData()
+//        var motifyText = ModifyViewController()
+//        motifyText.delegate = self
+        
+//        dataModel.delegate = self
+//        dataModel.requestData()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        todoTableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -61,12 +67,13 @@ extension TextViewController: UITableViewDataSource {
         return UITableViewCell()
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        indexPathRow = indexPath.row
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        indexPathRow = indexPath.row
+//    }
     
     @objc func editText(sender: UIButton) {
-        let selectedText = textContent[sender.tag]
+        indexPathRow = sender.tag
+        let selectedText = textContent[indexPathRow]
         let modifyViewController = ModifyViewController.modifyViewControllerForText(selectedText)
         
         navigationController?.pushViewController(modifyViewController, animated: true)
@@ -93,8 +100,14 @@ extension TextViewController: UITableViewDelegate {
 // MARK: - Data Manager Delegate
 
 extension TextViewController: DataModelDelegate {
-    func didRecieveDataUpdate(data: String) {
-        print(data)
+    func didRecieveDataUpdate(data: [String]) {
+        print(data[0])
+        if data[0] == "Add" {
+            textContent.append(data[1])
+        } else {
+            textContent[indexPathRow] = data[1]
+        }
+        todoTableView.reloadData()
     }
 }
 
