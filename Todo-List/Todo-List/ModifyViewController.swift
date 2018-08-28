@@ -13,15 +13,16 @@ class ModifyViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var textViewHeight: NSLayoutConstraint!
-//    @IBOutlet weak var backButton: UIBarButtonItem!
     
     static let storyboardName = "Main"
     static let viewControllerIdentifier = "ModifyViewController"
     var textContent = ""
     
     @IBAction func saveText(_ sender: UIButton) {
-        NotificationCenter.default.post(name: Notification.Name("SAVE"), object: nil, userInfo: ["textkey": textView.text])
-        navigationController?.popViewController(animated: true)
+    
+        let data = ["Title": self.title,"textkey": textView.text]
+            NotificationCenter.default.post(name: Notification.Name("SAVE"), object: nil, userInfo: data)
+            navigationController?.popViewController(animated: true)
     }
     
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {

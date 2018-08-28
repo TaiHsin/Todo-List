@@ -21,7 +21,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="text content" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zdd-mO-Ejt">
-                        <rect key="frame" x="16" y="12" width="91.5" height="20"/>
+                        <rect key="frame" x="16" y="5" width="238" height="33.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="OeD-qc-mBc"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -29,6 +32,10 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fL9-pP-eoT">
                         <rect key="frame" x="269" y="6" width="35" height="30"/>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="35" id="XOX-6n-2lY"/>
+                            <constraint firstAttribute="height" constant="30" id="g1j-eH-yUX"/>
+                        </constraints>
                         <state key="normal" title=" Edit ">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
@@ -38,9 +45,12 @@
                     </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="fL9-pP-eoT" firstAttribute="leading" secondItem="Zdd-mO-Ejt" secondAttribute="trailing" constant="15" id="4EH-4e-XhW"/>
                     <constraint firstAttribute="trailingMargin" secondItem="fL9-pP-eoT" secondAttribute="trailing" id="4Ye-hs-vtQ"/>
                     <constraint firstItem="fL9-pP-eoT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ivh-6M-qnv"/>
                     <constraint firstItem="Zdd-mO-Ejt" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="KAP-1Z-Zlq"/>
+                    <constraint firstAttribute="bottom" secondItem="Zdd-mO-Ejt" secondAttribute="bottom" constant="5" id="Pcr-Rh-ZC8"/>
+                    <constraint firstItem="Zdd-mO-Ejt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="SjV-DK-tW4"/>
                     <constraint firstItem="Zdd-mO-Ejt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="nE7-jn-hoN"/>
                 </constraints>
             </tableViewCellContentView>

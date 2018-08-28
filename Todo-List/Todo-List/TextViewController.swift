@@ -47,7 +47,13 @@ class TextViewController: UIViewController {
         print("save success!!!")
         
         guard let textData = notification.userInfo as? [String: String] else { fatalError() }
-        textContent[indexPathRow] = textData["textkey"]!
+        
+        if textData["Title"] == "Add" {
+            textContent.append(textData["textkey"]!)
+        } else {
+            textContent[indexPathRow] = textData["textkey"]!
+        }
+        
         todoTableView.reloadData()
     }
 
