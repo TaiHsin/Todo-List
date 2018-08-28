@@ -44,7 +44,7 @@ class TextViewController: UIViewController {
 
 extension TextViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return textContent.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -70,6 +70,13 @@ extension TextViewController: UITableViewDataSource {
         navigationController?.pushViewController(modifyViewController, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+            self.textContent.remove(at: indexPath.row)
+            todoTableView.deleteRows(at: [indexPath], with: .fade)
+//        }
+        todoTableView.reloadData()
+    }
 }
 
 extension TextViewController: UITableViewDelegate {

@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Modify View Controller-->
+        <!--Edit-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="ModifyViewController" id="BYZ-38-t0r" customClass="ModifyViewController" customModule="Todo_List" customModuleProvider="target" sceneMemberID="viewController">
@@ -24,6 +24,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="Xfc-sH-ds5"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eus-dt-Bd3">
@@ -51,7 +52,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="jMF-vB-iae">
+                    <navigationItem key="navigationItem" title="Edit" id="jMF-vB-iae">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="EpX-ry-x27">
                             <connections>
                                 <action selector="backButtonTapped:" destination="BYZ-38-t0r" id="T2K-jW-QUO"/>

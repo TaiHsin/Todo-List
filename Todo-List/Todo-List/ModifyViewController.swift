@@ -29,14 +29,14 @@ class ModifyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        textView.layer.cornerRadius = 5
+        saveButton.layer.cornerRadius = 5
         
-        if textContent == "" {
-            textView.text = ""
-        } else {
-            textView.text = textContent
-        }
-        
-//        adjustTextViewHeight()
+        changeTitle()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,17 +55,16 @@ class ModifyViewController: UIViewController {
         viewController.textContent = textContent
         return viewController
     }
-//
-//    func adjustTextViewHeight(){
-//        let fixedWidth = textView.frame.size.width
-//        let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
-//        self.textViewHeight.constant = newSize.height
-//        self.view.layoutIfNeeded()
-//    }
-//
-//    func textViewDidChange(_ textView: UITextView) {
-//        adjustTextViewHeight()
-//    }
-
+    
+    func changeTitle() {
+        if textContent == "" {
+            textView.text = ""
+            self.title = "Add"
+            
+        } else {
+            textView.text = textContent
+            self.title = "Edit"
+        }
+    }
 }
 
