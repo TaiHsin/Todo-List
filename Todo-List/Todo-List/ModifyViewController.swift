@@ -12,6 +12,7 @@ class ModifyViewController: UIViewController {
 
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var textViewHeight: NSLayoutConstraint!
 //    @IBOutlet weak var backButton: UIBarButtonItem!
     
     static let storyboardName = "Main"
@@ -34,6 +35,8 @@ class ModifyViewController: UIViewController {
         } else {
             textView.text = textContent
         }
+        
+//        adjustTextViewHeight()
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,6 +55,17 @@ class ModifyViewController: UIViewController {
         viewController.textContent = textContent
         return viewController
     }
+//
+//    func adjustTextViewHeight(){
+//        let fixedWidth = textView.frame.size.width
+//        let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+//        self.textViewHeight.constant = newSize.height
+//        self.view.layoutIfNeeded()
+//    }
+//
+//    func textViewDidChange(_ textView: UITextView) {
+//        adjustTextViewHeight()
+//    }
 
 }
 
