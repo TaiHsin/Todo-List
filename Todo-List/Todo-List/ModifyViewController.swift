@@ -19,7 +19,6 @@ class ModifyViewController: UIViewController {
     var textContent = ""
     
     @IBAction func saveText(_ sender: UIButton) {
-    
         let data = ["Title": self.title,"textkey": textView.text]
             NotificationCenter.default.post(name: Notification.Name("SAVE"), object: nil, userInfo: data)
             navigationController?.popViewController(animated: true)

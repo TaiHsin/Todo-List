@@ -32,7 +32,7 @@ class TextViewController: UIViewController {
         todoTableView.register(newNib, forCellReuseIdentifier: "TextTableViewCell")
         
         let notificationName = Notification.Name("SAVE")
-        NotificationCenter.default.addObserver(self, selector: #selector(saveText(notification:)), name: notificationName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getNotified(notification:)), name: notificationName, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,7 +40,7 @@ class TextViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @objc func saveText(notification: Notification) {
+    @objc func getNotified(notification: Notification) {
         guard let textData = notification.userInfo as? [String: String] else { fatalError() }
         
         if textData["Title"] == "Add" {
