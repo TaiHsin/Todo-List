@@ -12,30 +12,18 @@ class TextViewController: UIViewController {
     
     var textContent: [String] = ["test1", "test2", "test3", "test4", "test5"]
     var indexPathRow = 0
+    var selectedText = ""
 
     @IBOutlet var todoTableView: UITableView!
     
-    @IBAction func addText(_ sender: Any) {
-        let selectedText = ""
-        let modifyViewController = ModifyViewController.modifyViewControllerForText(selectedText)
-        modifyViewController.delegate = self
-        navigationController?.pushViewController(modifyViewController, animated: true)
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         todoTableView.delegate = self
         todoTableView.dataSource = self
         
         let newNib = UINib(nibName: "TextTableViewCell", bundle: nil)
         todoTableView.register(newNib, forCellReuseIdentifier: "TextTableViewCell")
-
-//        var motifyText = ModifyViewController()
-//        motifyText.delegate = self
-        
-//        dataModel.delegate = self
-//        dataModel.requestData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +32,17 @@ class TextViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    @IBAction func addText(_ sender: Any) {
+        selectedText = ""
+        switchViewController()
+    }
+    
+    func switchViewController() {
+        let modifyViewController = ModifyViewController.modifyViewControllerForText(selectedText)
+        modifyViewController.delegate = self
+        navigationController?.pushViewController(modifyViewController, animated: true)
     }
 }
 
@@ -66,17 +65,11 @@ extension TextViewController: UITableViewDataSource {
         }
         return UITableViewCell()
     }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        indexPathRow = indexPath.row
-//    }
-    
+
     @objc func editText(sender: UIButton) {
         indexPathRow = sender.tag
-        let selectedText = textContent[indexPathRow]
-        let modifyViewController = ModifyViewController.modifyViewControllerForText(selectedText)
-        
-        navigationController?.pushViewController(modifyViewController, animated: true)
+        selectedText = textContent[indexPathRow]
+        switchViewController()
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
