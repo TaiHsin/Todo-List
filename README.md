@@ -1,8 +1,6 @@
 # Todo-List
 
-Todo List with four way of passing data between ViewControllers
+## Closure
 
-1. Delegate
-2. Notification Center
-3. KVO
-4. Closure
+Todo List project practice with closure to pass data between ViewController.
+

@@ -41,15 +41,15 @@ class TextViewController: UIViewController {
         let modifyViewController = ModifyViewController.modifyViewControllerForText(selectedText)
         self.show(modifyViewController, sender: nil)
         
-        modifyViewController.completion = { (data) in
+        modifyViewController.completion = { [weak self] (data) in
             print(data)
-            if self.tagIndex == nil {
-                self.textContent.append(data)
+            if self?.tagIndex == nil {
+                self?.textContent.append(data)
             } else {
-                guard let tagIndex = self.tagIndex else { return }
-                self.textContent[tagIndex] = data
+                guard let tagIndex = self?.tagIndex else { return }
+                self?.textContent[tagIndex] = data
             }
-            self.todoTableView.reloadData()
+            self?.todoTableView.reloadData()
         }
     }
 }
