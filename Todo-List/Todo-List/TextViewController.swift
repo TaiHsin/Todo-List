@@ -13,10 +13,12 @@ class TextViewController: UIViewController {
     var textContent: [String] = ["test1", "test2", "test3", "test4", "test5"]
     var indexPathRow = 0
     var selectedText = ""
+    var tagIndex: Int?
 
     @IBOutlet var todoTableView: UITableView!
     
     @IBAction func addText(_ sender: Any) {
+        tagIndex = nil
         selectedText = ""
         switchViewController()
     }
@@ -66,6 +68,7 @@ extension TextViewController: UITableViewDataSource {
     }
     
     @objc func editText(sender: UIButton) {
+        tagIndex = sender.tag
         selectedText = textContent[sender.tag]
         switchViewController()
     }

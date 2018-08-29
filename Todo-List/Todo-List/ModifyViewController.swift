@@ -20,6 +20,7 @@ class ModifyViewController: UIViewController {
     
     @IBAction func saveText(_ sender: UIButton) {
         textView.text = ""
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
