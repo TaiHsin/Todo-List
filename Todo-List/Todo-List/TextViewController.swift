@@ -41,7 +41,7 @@ class TextViewController: UIViewController {
         let modifyViewController = ModifyViewController.modifyViewControllerForText(selectedText)
         self.show(modifyViewController, sender: nil)
         
-        modifyViewController.completion = { [weak self] (data) in
+        modifyViewController.dataPassing = { [weak self] (data) in
             print(data)
             if self?.tagIndex == nil {
                 self?.textContent.append(data)

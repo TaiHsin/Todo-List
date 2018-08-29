@@ -17,13 +17,12 @@ class ModifyViewController: UIViewController {
     static let storyboardName = "Main"
     static let viewControllerIdentifier = "ModifyViewController"
     var textContent = ""
-    var completion: ((_ data: String) -> Void)?
+    var dataPassing: ((_ data: String) -> Void)?
     
     @IBAction func saveText(_ sender: UIButton) {
         textContent = textView.text
-        guard let completion = completion else { return }
-        completion(textContent)
-        
+        guard let dataPassing = dataPassing else { return }
+        dataPassing(textContent)
         textView.text = ""
         navigationController?.popViewController(animated: true)
     }
@@ -41,7 +40,6 @@ class ModifyViewController: UIViewController {
         saveButton.layer.cornerRadius = 5
         
         changeTitle()
-
     }
 
     override func didReceiveMemoryWarning() {
