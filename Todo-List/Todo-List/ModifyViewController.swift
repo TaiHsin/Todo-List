@@ -21,8 +21,8 @@ class ModifyViewController: UIViewController {
     
     @IBAction func saveText(_ sender: UIButton) {
         textContent = textView.text
-        guard let dataComletion = completion else { return }
-        dataComletion(textContent)
+        guard let completion = completion else { return }
+        completion(textContent)
         
         textView.text = ""
         navigationController?.popViewController(animated: true)
