@@ -35,6 +35,12 @@ class TextViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    func switchViewController() {
+        let modifyViewControllerData = modifyViewController.modifyViewControllerForText(selectedText)
+        print("------")
+        self.show(modifyViewControllerData, sender: nil)
+    }
 }
 
 // MARK: - Table View Data Source
@@ -63,9 +69,7 @@ extension TextViewController: UITableViewDataSource {
     
     @objc func editText(sender: UIButton) {
         selectedText = textContent[sender.tag]
-        
         switchViewController()
-//        modifyViewController.addObserver(self, forKeyPath: "textView.text", options: .new, context: nil)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -75,17 +79,6 @@ extension TextViewController: UITableViewDataSource {
         }
         todoTableView.reloadData()
     }
-    
-    func switchViewController() {
-        let modifyViewControllerData = modifyViewController.modifyViewControllerForText(selectedText)
-        self.show(modifyViewControllerData, sender: nil)
-    }
-    
-//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-//        if keyPath == "textView.text" {
-//            print(self)
-//        }
-//    }
 }
 
 // MARK: - Table View Delegate
