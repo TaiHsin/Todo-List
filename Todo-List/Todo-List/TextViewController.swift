@@ -48,6 +48,7 @@ class TextViewController: UIViewController {
         if keyPath == "text" {
             print(self.modifyViewController.text)
             let modifiedText = self.modifyViewController.text
+            
             if tag == nil {
                 textContent.append(modifiedText)
             } else {
@@ -55,6 +56,10 @@ class TextViewController: UIViewController {
             }
         }
         todoTableView.reloadData()
+    }
+    
+    deinit {
+        modifyViewController.removeObserver(self, forKeyPath: "text")
     }
 }
 
