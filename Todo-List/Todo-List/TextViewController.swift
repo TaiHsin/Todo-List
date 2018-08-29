@@ -56,7 +56,6 @@ class TextViewController: UIViewController {
             }
             todoTableView.reloadData()
         }
-        
     }
     
     deinit {
