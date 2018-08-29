@@ -17,8 +17,13 @@ class ModifyViewController: UIViewController {
     static let storyboardName = "Main"
     static let viewControllerIdentifier = "ModifyViewController"
     var textContent = ""
+    var completion: ((_ data: String) -> Void)?
     
     @IBAction func saveText(_ sender: UIButton) {
+        textContent = textView.text
+        guard let dataComletion = completion else { return }
+        dataComletion(textContent)
+        
         textView.text = ""
         navigationController?.popViewController(animated: true)
     }
@@ -42,7 +47,7 @@ class ModifyViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     class func modifyViewControllerForText(_ textContent: String) -> ModifyViewController {
         let storyboard = UIStoryboard(name: ModifyViewController.storyboardName, bundle: nil)
         
@@ -58,7 +63,6 @@ class ModifyViewController: UIViewController {
     
     func changeTitle() {
         if textContent == "" {
-//            textView.text = ""
             self.title = "Add"
             
         } else {
