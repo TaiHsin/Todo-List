@@ -40,3 +40,7 @@ modifyViewController.dataPassing = { [weak self] (data) in
 ``` 
 
 In TextViewController, we use this callback closure property when the view is ready to switch to ModifyViewController. We use `tagIndex` which stored `indexPath.row` to determine passed back data should update table view or create new cell. 
+
+
+Reference:
+https://medium.com/@stasost/ios-three-ways-to-pass-data-from-model-to-controller-b47cc72a4336
