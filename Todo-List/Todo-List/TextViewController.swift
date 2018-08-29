@@ -23,39 +23,40 @@ class TextViewController: UIViewController {
         selectedText = ""
         switchViewController()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         todoTableView.delegate = self
         todoTableView.dataSource = self
         
         let newNib = UINib(nibName: "TextTableViewCell", bundle: nil)
         todoTableView.register(newNib, forCellReuseIdentifier: "TextTableViewCell")
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     func switchViewController() {
         modifyViewController = ModifyViewController.modifyViewControllerForText(selectedText)
-        modifyViewController.addObserver(self, forKeyPath: "text", options: [.old, .new], context: nil)
+        modifyViewController.addObserver(self, forKeyPath: "text", options: .new, context: nil)
         self.show(modifyViewController, sender: nil)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "text" {
-            print(self.modifyViewController.text)
-            let modifiedText = self.modifyViewController.text
+            guard let change = change, let modifiedText = change[NSKeyValueChangeKey.newKey] as? String else { return }
+            print(modifiedText)
             
             if tag == nil {
                 textContent.append(modifiedText)
             } else {
                 textContent[tag!] = modifiedText
             }
+            todoTableView.reloadData()
         }
-        todoTableView.reloadData()
+        
     }
     
     deinit {
@@ -73,7 +74,7 @@ extension TextViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "TextTableViewCell", for: indexPath) as? TextTableViewCell {
-         
+            
             cell.textLable.text = textContent[indexPath.row]
             cell.editButton.addTarget(self, action: #selector(self.editText), for: .touchUpInside)
             cell.editButton.tag = indexPath.row
