@@ -3,9 +3,9 @@
 ## Notification Center
 
 
-**Todo List pratice with Notification Center to passing data between ViewControllers.
+**Todo List pratice with Notification Center to passing data between ViewControllers.**
 
-**In TextViewController ViewDidLoad, we create notification observer with `Notification.Name` and identifier name `"SAVE"`. 
+**In TextViewController ViewDidLoad, we create notification observer with `Notification.Name` and identifier name `"SAVE"`.** 
 						
 
 ```
@@ -28,7 +28,7 @@ NotificationCenter.default.post(name: Notification.Name("SAVE"), object: nil, us
 ```
 					 
 
-**Now back to TextViewController we defined method that will execute when observer get notification. The method name should same as in observer's argument `selector` and add `@objc` in front of function declaration. 
+**Now back to TextViewController we defined method that will execute when observer get notification. The method name should same as in observer's argument `selector` and add `@objc` in front of function declaration.**
 
 ```
 @objc func getNotified(notification: Notification) {
@@ -43,4 +43,4 @@ NotificationCenter.default.post(name: Notification.Name("SAVE"), object: nil, us
 }
 ```
 
-**In `getNotified()` method, we use notification.userInfo to get the data that has been pass back and use the first array of dictionary (with key "Title") to decide which value we want to parse. TextViewController will update or add motified text on table view cell depend on weather the title value is "Add" or "Edit".
+**In `getNotified()` method, we use notification.userInfo to get the data that has been pass back and use the first array of dictionary (with key "Title") to decide which value we want to parse. TextViewController will update or add motified text on table view cell depend on weather the title value is "Add" or "Edit".**
