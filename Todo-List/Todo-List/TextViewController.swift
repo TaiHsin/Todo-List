@@ -38,7 +38,9 @@ class TextViewController: UIViewController {
     func switchViewController() {
         let modifyViewController = ModifyViewController.modifyViewControllerForText(selectedText)
         modifyViewController.delegate = self
-        navigationController?.pushViewController(modifyViewController, animated: true)
+        self.show(modifyViewController, sender: nil)
+//        navigationController?.pushViewController(modifyViewController, animated: true)
+//        push will be deprecate (replaced by self.show)
     }
 }
 
