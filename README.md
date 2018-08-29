@@ -14,14 +14,15 @@ Inside `saveText` method, we can pass data through `dataPassing` property
 
 ```
 @IBAction func saveText(_ sender: UIButton) {
-	textContent = textView.text
+   textContent = textView.text
    guard let dataPassing = dataPassing else { return }
    dataPassing(textContent)
    textView.text = ""
    navigationController?.popViewController(animated: true)
 }
 ```
-> Due to `saveText` is a Button function, we use closure property to pass data instead of completion handler.
+> Due to `saveText` is a Button function, we use closure property to pass data instead of completion handler.	
+> `textView.text = ""` is to reset `textView` after save button action actived.
 
 ```
 let modifyViewController = ModifyViewController.modifyViewControllerForText(selectedText)
