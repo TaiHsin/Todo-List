@@ -12,14 +12,14 @@ class TextViewController: UIViewController {
     
     var textContent: [String] = ["test1", "test2", "test3", "test4", "test5"]
     var indexPathRow = 0
+    var selectedText = ""
+    var modifyViewController = ModifyViewController()
 
     @IBOutlet var todoTableView: UITableView!
     
     @IBAction func addText(_ sender: Any) {
-        let selectedText = ""
-        let modifyViewController = ModifyViewController.modifyViewControllerForText(selectedText)
-        
-        navigationController?.pushViewController(modifyViewController, animated: true)
+        selectedText = ""
+        switchViewController()
     }
 
     override func viewDidLoad() {
@@ -62,10 +62,10 @@ extension TextViewController: UITableViewDataSource {
     }
     
     @objc func editText(sender: UIButton) {
-        let selectedText = textContent[sender.tag]
-        let modifyViewController = ModifyViewController.modifyViewControllerForText(selectedText)
+        selectedText = textContent[sender.tag]
         
-        navigationController?.pushViewController(modifyViewController, animated: true)
+        switchViewController()
+//        modifyViewController.addObserver(self, forKeyPath: "textView.text", options: .new, context: nil)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -75,6 +75,17 @@ extension TextViewController: UITableViewDataSource {
         }
         todoTableView.reloadData()
     }
+    
+    func switchViewController() {
+        let modifyViewControllerData = modifyViewController.modifyViewControllerForText(selectedText)
+        self.show(modifyViewControllerData, sender: nil)
+    }
+    
+//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+//        if keyPath == "textView.text" {
+//            print(self)
+//        }
+//    }
 }
 
 // MARK: - Table View Delegate

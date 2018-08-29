@@ -19,7 +19,7 @@ class ModifyViewController: UIViewController {
     var textContent = ""
     
     @IBAction func saveText(_ sender: UIButton) {
-        
+        textView.text = ""
     }
     
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
@@ -42,7 +42,7 @@ class ModifyViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
-    class func modifyViewControllerForText(_ textContent: String) -> ModifyViewController {
+    func modifyViewControllerForText(_ textContent: String) -> ModifyViewController {
         let storyboard = UIStoryboard(name: ModifyViewController.storyboardName, bundle: nil)
         
         guard let viewController = storyboard.instantiateViewController(withIdentifier: ModifyViewController.viewControllerIdentifier)
@@ -57,7 +57,7 @@ class ModifyViewController: UIViewController {
     
     func changeTitle() {
         if textContent == "" {
-            textView.text = ""
+//            textView.text = ""
             self.title = "Add"
             
         } else {
