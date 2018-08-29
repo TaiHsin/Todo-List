@@ -13,10 +13,13 @@ class TextViewController: UIViewController {
     var textContent: [String] = ["test1", "test2", "test3", "test4", "test5"]
     var indexPathRow = 0
     var selectedText = ""
-
+    var modifyViewController = ModifyViewController()
+    var tag: Int?
+    
     @IBOutlet var todoTableView: UITableView!
     
     @IBAction func addText(_ sender: Any) {
+        tag = nil
         selectedText = ""
         switchViewController()
     }
@@ -36,8 +39,22 @@ class TextViewController: UIViewController {
     }
     
     func switchViewController() {
-        let modifyViewController = ModifyViewController.modifyViewControllerForText(selectedText)
+        modifyViewController = ModifyViewController.modifyViewControllerForText(selectedText)
+        modifyViewController.addObserver(self, forKeyPath: "text", options: [.old, .new], context: nil)
         self.show(modifyViewController, sender: nil)
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "text" {
+            print(self.modifyViewController.text)
+            let modifiedText = self.modifyViewController.text
+            if tag == nil {
+                textContent.append(modifiedText)
+            } else {
+                textContent[tag!] = modifiedText
+            }
+        }
+        todoTableView.reloadData()
     }
 }
 
@@ -67,6 +84,7 @@ extension TextViewController: UITableViewDataSource {
     
     @objc func editText(sender: UIButton) {
         selectedText = textContent[sender.tag]
+        tag = sender.tag
         switchViewController()
     }
     

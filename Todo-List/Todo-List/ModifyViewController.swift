@@ -17,9 +17,12 @@ class ModifyViewController: UIViewController {
     static let storyboardName = "Main"
     static let viewControllerIdentifier = "ModifyViewController"
     var textContent = ""
+    @objc dynamic var text = ""
     
     @IBAction func saveText(_ sender: UIButton) {
+        text = textView.text
         textView.text = ""
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
@@ -50,7 +53,6 @@ class ModifyViewController: UIViewController {
                 
             return ModifyViewController()
         }
-        
         viewController.textContent = textContent
         return viewController
     }
