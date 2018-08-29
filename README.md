@@ -70,7 +70,7 @@ In method, we use guard let to unwrap optional value and use key `"NSKeyValueCha
 
 Here we also use `tagIndex` that stored `indexPath.row` data to decide data should be update or create new cell to table view.
 
---
+
 ref. Playing with Key-Value Observing (KVO) (Swift3).     
 https://medium.com/@ericamillado/playing-with-key-value-observing-kvo-swift3-146da9c070a6
  
