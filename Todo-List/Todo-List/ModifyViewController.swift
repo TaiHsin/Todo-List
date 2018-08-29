@@ -42,7 +42,7 @@ class ModifyViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
-    func modifyViewControllerForText(_ textContent: String) -> ModifyViewController {
+    class func modifyViewControllerForText(_ textContent: String) -> ModifyViewController {
         let storyboard = UIStoryboard(name: ModifyViewController.storyboardName, bundle: nil)
         
         guard let viewController = storyboard.instantiateViewController(withIdentifier: ModifyViewController.viewControllerIdentifier)

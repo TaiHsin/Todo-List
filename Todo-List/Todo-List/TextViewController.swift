@@ -13,7 +13,6 @@ class TextViewController: UIViewController {
     var textContent: [String] = ["test1", "test2", "test3", "test4", "test5"]
     var indexPathRow = 0
     var selectedText = ""
-    var modifyViewController = ModifyViewController()
 
     @IBOutlet var todoTableView: UITableView!
     
@@ -37,9 +36,8 @@ class TextViewController: UIViewController {
     }
     
     func switchViewController() {
-        let modifyViewControllerData = modifyViewController.modifyViewControllerForText(selectedText)
-        print("------")
-        self.show(modifyViewControllerData, sender: nil)
+        let modifyViewController = ModifyViewController.modifyViewControllerForText(selectedText)
+        self.show(modifyViewController, sender: nil)
     }
 }
 
