@@ -3,9 +3,9 @@
 ## Notification Center
 
 
-Todo List pratice with Notification Center to passing data between ViewControllers.
+**Todo List pratice with Notification Center to passing data between ViewControllers.
 
-In TextViewController ViewDidLoad, we create notification observer with `Notification.Name` and identifier name `"SAVE"`. 
+**In TextViewController ViewDidLoad, we create notification observer with `Notification.Name` and identifier name `"SAVE"`. 
 						
 
 ```
@@ -17,10 +17,10 @@ Also, declare method `getNotified` to execute  once the observer got the change 
 
 
 
-Now we can declare post in ModifyViewController to post Notification once it's activated. The argument `name` should have the same string name (here is `"SAVE"`) with in addObserver's name argument in TextViewController.
+**Now we can declare post in ModifyViewController to post Notification once it's activated. The argument `name` should have the same string name (here is `"SAVE"`) with in addObserver's name argument in TextViewController.**
 
 
-Here we declare data with an array of dictionary to contain title value with key `"Title"` and textView.text value with key `"textKey"`. To pass data back, we use argument `userInfo` which is type of `[AnyHashable : Any]?`
+**Here we declare data with an array of dictionary to contain title value with key `"Title"` and textView.text value with key `"textKey"`. To pass data back, we use argument `userInfo` which is type of `[AnyHashable : Any]?`**
 
 ```
 let data = ["Title": self.title,"textkey": textView.text]        		             
@@ -28,7 +28,7 @@ NotificationCenter.default.post(name: Notification.Name("SAVE"), object: nil, us
 ```
 					 
 
-Now back to TextViewController we defined method that will execute when observer get notification. The method name should same as in observer's argument `selector` and add `@objc` in front of function declaration. 
+**Now back to TextViewController we defined method that will execute when observer get notification. The method name should same as in observer's argument `selector` and add `@objc` in front of function declaration. 
 
 ```
 @objc func getNotified(notification: Notification) {
@@ -43,4 +43,4 @@ Now back to TextViewController we defined method that will execute when observer
 }
 ```
 
-In `getNotified()` method, we use notification.userInfo to get the data that has been pass back and use the first array of dictionary (with key "Title") to decide which value we want to parse. TextViewController will update or add motified text on table view cell depend on weather the title value is "Add" or "Edit".
+**In `getNotified()` method, we use notification.userInfo to get the data that has been pass back and use the first array of dictionary (with key "Title") to decide which value we want to parse. TextViewController will update or add motified text on table view cell depend on weather the title value is "Add" or "Edit".
