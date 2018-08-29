@@ -1,6 +1,6 @@
 # Todo-List
 
-##Notification Center
+## Notification Center
 
 
 Todo List pratice with Notification Center to passing data between ViewControllers.
@@ -15,6 +15,8 @@ NotificationCenter.default.addObserver(self, selector: #selector(getNotified(not
 > *Notice, the Notification name string in addObserver argument should exactly same with post notification. This make sure once 
 Also, declare method `getNotified` to execute  once the observer got the change will post notification to right observer with the same Notification name.*
 
+
+
 Now we can declare post in ModifyViewController to post Notification once it's activated. The argument `name` should have the same string name (here is `"SAVE"`) with in addObserver's name argument in TextViewController.
 
 
@@ -24,19 +26,20 @@ Here we declare data with an array of dictionary to contain title value with key
 let data = ["Title": self.title,"textkey": textView.text]        		             
 NotificationCenter.default.post(name: Notification.Name("SAVE"), object: nil, userInfo: data) navigationController?.popViewController(animated: true)
 ```
+					 
 
 Now back to TextViewController we defined method that will execute when observer get notification. The method name should same as in observer's argument `selector` and add `@objc` in front of function declaration. 
 
 ```
 @objc func getNotified(notification: Notification) {
-	guard let textData = notification.userInfo as? [String: String] else { fatalError() }
+    guard let textData = notification.userInfo as? [String: String] else { fatalError() }
         
- 	if textData["Title"] == "Add" {
-  		textContent.append(textData["textkey"]!)
-   	} else {
+    if textData["Title"] == "Add" {
+  	textContent.append(textData["textkey"]!)
+    } else {
       	textContent[indexPathRow] = textData["textkey"]!
-   	}
-   	todoTableView.reloadData()
+    }
+    todoTableView.reloadData()
 }
 ```
 
