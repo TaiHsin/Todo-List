@@ -7,6 +7,8 @@ Use four ways to pass data between ViewController in Todo list project
 * Key Value Observing
 * Closure
 
+**Note: for detail code please refer to each branch**
+
 ---
 
 ## Delegate
