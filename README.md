@@ -9,7 +9,7 @@ Use four ways to pass data between ViewController in Todo list project
 
 ---
 
-##Delegate
+## Delegate
 
 
 Todo List project practice with delegation way to pass data between ViewController.
@@ -65,7 +65,7 @@ To determine the text data is from add or edit. which means, to update the table
 
 
 
-##Notification Center
+## Notification Center
 
 Todo List pratice with Notification Center to passing data between ViewControllers.
 
@@ -112,7 +112,7 @@ In `getNotified()` method, we use notification.userInfo to get the data that has
 
 
 
-##Key Value Observing
+## Key Value Observing
 
 
 Like Notification Center to pass data, KVO also need to have register addObserver and detetmine which property want to observe in other class.   
@@ -183,11 +183,10 @@ In method, we use guard let to unwrap optional value and use key `"NSKeyValueCha
 Here we also use `tagIndex` that stored `indexPath.row` data to decide data should be update or create new cell to table view.
 
 
-ref. Playing with Key-Value Observing (KVO) (Swift3).     
-https://medium.com/@ericamillado/playing-with-key-value-observing-kvo-swift3-146da9c070a6
+Reference: [Playing with Key-Value Observing (KVO) (Swift3)](https://medium.com/@ericamillado/playing-with-key-value-observing-kvo-swift3-146da9c070a6)
  
 
-##Closure
+## Closure
 
 Todo List project practice with closure to pass data between ViewController.
 
@@ -230,6 +229,5 @@ modifyViewController.dataPassing = { [weak self] (data) in
 In TextViewController, we use this callback closure property when the view is ready to switch to ModifyViewController. We use `tagIndex` which stored `indexPath.row` to determine passed back data should update table view or create new cell. 
 
 
-Reference: iOS: Three ways to pass data from Model to Controller    
-https://medium.com/@stasost/ios-three-ways-to-pass-data-from-model-to-controller-b47cc72a4336
+Reference: [iOS: Three ways to pass data from Model to Controller](https://medium.com/@stasost/ios-three-ways-to-pass-data-from-model-to-controller-b47cc72a4336)
 
